@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script type="text/javascript" src="arduinocom.js"></script>
+    <script></script>
+
+    <head>
+        <title>Automation</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+        />
+
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            /* Create three equal columns that floats next to each other */
+            .column {
+                float: left;
+                width: 25%;
+                padding: 10px;
+                height: 300px;
+                /* Should be removed. Only for demonstration */
+            }
+
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+        </style>
+    </head>
+
+    <body>
+        <nav>
+            <div class="nav-wrapper">
+                <a class="brand-logo center">Automation</a>
+            </div>
+        </nav>
+
+        <div class="row">
+            <div class="column">
+                <label>Module 0 (Start)</label>
+                <form action="#">
+                    <p>
+                        <label>
+                            <input name="mod0" type="radio" checked />
+                            <span>RIGHT</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="mod0" type="radio" />
+                            <span>CENTER</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="mod0" type="radio" />
+                            <span>LEFT</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="mod0" type="radio" />
+                            <span>DOWN</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="mod0" type="radio" />
+                            <span>UP</span>
+                        </label>
+                    </p>
+                </form>
+            </div>
+            <div class="column">
+                <label>Module 1</label>
+                <form action="#">
+                    <p>
+                        <label>
+                            <input name="mod1" type="radio" checked />
+                            <span>RIGHT</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="mod1" type="radio" />
+                            <span>CENTER</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="mod1" type="radio" />
+                            <span>LEFT</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="mod1" type="radio" />
+                            <span>DOWN</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="mod1" type="radio" />
+                            <span>UP</span>
+                        </label>
+                    </p>
+                </form>
+            </div>
+            <div class="column">
+                <label>Module 2</label>
+                <form action="#">
+                    <p>
+                        <label>
+                            <input name="mod2" type="radio" checked />
+                            <span>RIGHT</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="mod2" type="radio" />
+                            <span>CENTER</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="mod2" type="radio" />
+                            <span>LEFT</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="mod2" type="radio" />
+                            <span>DOWN</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="mod2" type="radio" />
+                            <span>UP</span>
+                        </label>
+                    </p>
+                </form>
+            </div>
+            <div class="column">
+                <label>Module 3 (End)</label>
+                <form action="#">
+                    <p>
+                        <label>
+                            <input name="mod3" type="radio" checked />
+                            <span>RIGHT</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="mod3" type="radio" />
+                            <span>CENTER</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="mod3" type="radio" />
+                            <span>LEFT</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="mod3" type="radio" />
+                            <span>DOWN</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="mod3" type="radio" />
+                            <span>UP</span>
+                        </label>
+                    </p>
+                </form>
+            </div>
+        </div>
+
+        <div class="center-align">
+            <button
+                id="config"
+                class="btn waves-effect waves-light"
+                type="submit"
+                name="action"
+                onclick="arduinocom.logPorts();"
+            >
+                Configure
+            </button>
+        </div>
+    </body>
+</html>

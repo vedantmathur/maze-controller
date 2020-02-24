@@ -1,0 +1,18 @@
+{
+  "name": "electron-test",
+  "version": "1.0.0",
+  "description": "Poe Lab in Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Vedant Mathur @ Poe Lab",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^7.1.9",
+    "serialport": "^8.0.6"
+  },
+  "devDependencies": {
+    "electron-rebuild": "^1.9.0"
+  }
+}
