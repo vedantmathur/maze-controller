@@ -4,3 +4,4 @@ node_modules/
 # Don't track these files
 .DS_Store
 *.code-workspace
+stackoverflow

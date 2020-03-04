@@ -1,13 +1,11 @@
-// Ports are in localstorage. To access ports, do var ports = localStorage.getItem("allports");
+// Ports are in localstorage. To access ports, do var ports = JSON.parse(localStorage.getItem("allports"));
 
 class arduinocom {
-    init() {}
-
     // Connect to COM ports. This keeps the COM port open until 4. runs.
     static connectCOM() {
         var sp = require("serialport");
         // Make all ports available
-        this.closePorts();
+        //this.closePorts();
 
         var ports = new Array(4);
         var modport_text = [];
@@ -20,22 +18,29 @@ class arduinocom {
         }
         for (var i = 0; i < modport_value.length; i++) {
             if (modport_value[i] != "0") {
-                ports[i] = new sp(modport_text[i], { baudRate: 9600 });
-                ports[i] = modport_text[i];
+                ports[i] = new sp(modport_text[i], {
+                    baudRate: 9600,
+                    parser: new sp.parsers.Readline("\r\n")
+                });
+                console.log(i);
+                //qports[i] = modport_text[i];
             } else {
                 ports[i] = -1;
             }
         }
         // Display connections.
         console.log(ports);
-        localStorage.setItem("allports", ports);
+        console.log(typeof ports[0]);
+        console.log(ports[0]);
+
+        localStorage.setItem("allports", JSON.stringify(ports));
         this.logPorts();
         //ports[0].write("e");
     }
 
     // Close the port so other apps can use it at some point
     static closePorts() {
-        var ports = localStorage.getItem("allports");
+        var ports = JSON.parse(localStorage.getItem("allports"));
         for (let i = 0; i < ports.length; i++) {
             if (ports[i] != -1 && ports[i] != 0) {
                 this.ports[i].close();
@@ -45,24 +50,58 @@ class arduinocom {
 
     // Configure the module to the spec. Write the byte over COM.
     static configureModules() {
+        var sp = require("serialport");
         // Connect to COM PORTS
-        var ports = localStorage.getItem("allports");
+        var ports = JSON.parse(localStorage.getItem("allports"));
 
         // Read Radio Button value
-        var j;
+        var i, j;
+        // For each module...
         for (j = 0; j < 4; j++) {
             var modulesetting = 0;
             var radiosetting = document.getElementsByName("mod" + j);
+            // Find radio button that is checked
             for (i = 0; i < radiosetting.length; i++) {
                 if (radiosetting[i].checked) modulesetting = i;
             }
             console.log("Module " + j + ": " + modulesetting);
+
+            // Testing
+            if (j == 0) {
+                if (modulesetting == 1) {
+                    console.log(ports[0]);
+                    ports[0].on("open", () => {
+                        //ports[0].write("e");
+                        console.log("hello");
+                    });
+                }
+                if (modulesetting == 2) {
+                    console.log("mod2 ws");
+                    ports[0].on("open", () => {
+                        ports[0].write("s");
+                    });
+                }
+            }
         }
     }
     // For debugging purposes. This displays the connections over console.
     static logPorts() {
-        var ports = localStorage.getItem("allports");
+        var sp = require("serialport");
+        //var ports: typeof sp;
+        var ports = JSON.parse(localStorage.getItem("allports"));
         console.log(ports);
+        ports[0] = Object.assign(
+            new sp(ports[0].path, {
+                baudRate: 9600
+            }),
+            ports[0]
+        );
+        console.log(ports[0]);
+
+        ports[0].on("open", () => {
+            //ports[0].write("e");
+            console.log("hello");
+        });
     }
 }
 
