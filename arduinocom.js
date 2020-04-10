@@ -1,8 +1,10 @@
 class arduinocom {
+    // Keeps the access variables for the instance.
     constructor() {
         this.ports = new Array(4);
     }
 
+    // Open a COM port and insert into this.ports
     connectCOM() {
         var sp = require("serialport");
 
@@ -32,9 +34,6 @@ class arduinocom {
                 this.ports[i] = -1;
             }
         }
-
-        // For debugging purposes.
-        this.logPorts();
     }
 
     // Close the port. Ignore -1 or 0 for uninitialized port.
@@ -48,8 +47,6 @@ class arduinocom {
 
     // Configure the module to the spec. Write the byte over COM.
     configureModules() {
-        var sp = require("serialport");
-
         // Read Radio Button value
         var i, j;
         // For each module...
@@ -60,19 +57,14 @@ class arduinocom {
             for (i = 0; i < radiosetting.length; i++) {
                 if (radiosetting[i].checked) modulesetting = i;
             }
-            console.log("Module " + j + ": " + modulesetting);
 
-            // Testing
+            // Temporary for e = OFF, s = ON. On a connected Arduino
             if (j == 0) {
                 if (modulesetting == 1) {
-                    console.log(this.ports[0]);
                     this.ports[0].write("e");
                 }
                 if (modulesetting == 2) {
-                    console.log(this.ports[0]);
-                    //this.ports[0].on("open", () => {
                     this.ports[0].write("s");
-                    // });
                 }
             }
         }
@@ -82,14 +74,14 @@ class arduinocom {
     logPorts() {
         console.log("this.ports");
         console.log(this.ports);
-        console.log("typeof this.ports[0]");
-        console.log(typeof this.ports[0]);
         console.log("this.ports[0]");
         console.log(this.ports[0]);
+        console.log("typeof this.ports[0]");
+        console.log(typeof this.ports[0]);
     }
 }
 
-// Extra functions
+// Does not require this.ports
 // See which COM ports are available and write to display.
 function readCOM() {
     var sp = require("serialport");
@@ -103,8 +95,6 @@ function readCOM() {
         var i = 0;
         ports.forEach(function (port) {
             i = i + 1;
-            console.log(port.path);
-            console.log(i);
 
             // Add port to list
             // There has to be a better way to do this

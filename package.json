@@ -1,18 +1,22 @@
 {
-  "name": "electron-test",
-  "version": "1.0.0",
-  "description": "Poe Lab in Electron",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron ."
-  },
-  "author": "Vedant Mathur @ Poe Lab",
-  "license": "MIT",
-  "dependencies": {
-    "electron": "^7.1.9",
-    "serialport": "^8.0.6"
-  },
-  "devDependencies": {
-    "electron-rebuild": "^1.9.0"
-  }
+    "name": "maze-controller",
+    "version": "0.8.0",
+    "description": "Insight Maze Controller",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "build-mac": "electron-packager . Maze-Controller --overwrite --platform=darwin",
+        "build-win": "electron-packager . Maze-Controller --overwrite --platform=win32",
+        "build-linux": "electron-packager . Maze-Controller --overwrite --platform=linux"
+    },
+    "author": "Vedant Mathur @ Poe Lab",
+    "license": "MIT",
+    "dependencies": {
+        "electron": "^7.1.9",
+        "serialport": "^8.0.6"
+    },
+    "devDependencies": {
+        "electron-packager": "^14.2.1",
+        "electron-rebuild": "^1.9.0"
+    }
 }
