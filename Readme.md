@@ -7,7 +7,17 @@
 
 ## What I'm currently working on
 
-2. Communicate with Arduino
+4. Clean up code
+
+## Frontend
+
+My least favorite part....
+
+Mind you, I learned javascript/html/css while working on this project.
+
+Here: More guessing how things actually work
+
+## Backend
 
 We have several functions we will be using
 
@@ -34,7 +44,9 @@ The next four functions are wrapped inside a class, the class has an instantiate
 
 #### `connectCOM()`
 
-This function establishes the connection to the COM ports. It stores the connection handle (\*) in `ports` for access everywhere.
+This function establishes the connection to the COM ports. It stores the connection handle in `ports` for access everywhere.
+
+This button is associated with the GUI button "Save Modules"
 
 Future:
 
@@ -43,7 +55,7 @@ Future:
 
 #### `configureModules()`
 
-This will send a command with [L/C/R U/D] \(\*\*) to each connected arduino (from `ports`) and the Arduino will raise/lower each arm to the correct position.
+This will send a command with [L/C/R U/D] \(\*) to each connected arduino (from `ports`) and the Arduino will raise/lower each arm to the correct position.
 
 #### `closePorts()`
 
@@ -56,6 +68,4 @@ This does a `console.log(this.ports)` to display the current connection status o
 
 ### References
 
-(\*) It may possibly just save the name of the COM port for repeated connection (not ideal), but it may just work.
-
-(\*\*) [Left/Center/Right AllUp/AllDown]
+(\*) [Left/Center/Right AllUp/AllDown]

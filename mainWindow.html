@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+    <!-- Include `ardinocom.js` with Arduino functions -->
     <script type="text/javascript" src="arduinocom.js"></script>
 
+    <!-- Let the header and stylesheet reflect Material Design -->
     <head>
         <title>Automation</title>
         <link
@@ -9,6 +11,8 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
         />
     </head>
+
+    <!-- CSS -->
     <style>
         * {
             box-sizing: border-box;
@@ -19,8 +23,6 @@
             float: left;
             width: 25%;
             padding: 10px;
-            /*height: 250px; */
-            /* Should be removed. Only for demonstration */
         }
 
         /* Clear floats after the columns */
@@ -38,7 +40,8 @@
             </div>
         </nav>
 
-        <div class="row" style="padding-right: 5px; padding-left: 5px">
+        <!-- Row of configuration radio buttons -->
+        <div class="row" style="padding-right: 5px; padding-left: 5px;">
             <div class="column">
                 <label>Module 0 (Start)</label>
                 <form action="#">
@@ -181,7 +184,8 @@
             </div>
         </div>
 
-        <div class="row" style="padding-right: 5px; padding-left: 5px">
+        <!-- Row of COM port selection dropdowns -->
+        <div class="row" style="padding-right: 5px; padding-left: 5px;">
             <div class="column">
                 <div class="pickers">
                     <select id="mod0select" class="browser-default">
@@ -223,7 +227,7 @@
                         class="btn waves-effect waves-light"
                         type="submit"
                         name="action"
-                        onclick="arduinocom.connectCOM();"
+                        onclick="acom.connectCOM();"
                     >
                         Save Modules Config
                     </button>
@@ -231,13 +235,14 @@
             </div>
         </div>
 
+        <!-- Configure button at bottom of page -->
         <div class="center-align">
             <button
                 id="config"
                 class="btn waves-effect waves-light"
                 type="submit"
                 name="action"
-                onclick="arduinocom.logPorts();"
+                onclick="acom.configureModules();"
             >
                 Configure
             </button>
@@ -245,6 +250,7 @@
     </body>
 
     <script>
+        const acom = new arduinocom();
         readCOM();
     </script>
 </html>

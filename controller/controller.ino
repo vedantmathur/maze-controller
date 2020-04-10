@@ -35,7 +35,7 @@ void serial() {
         digitalWrite(LED_BUILTIN, HIGH);
     }
     if (inputBuffer == 'e') {
-     digitalWrite(LED_BUILTIN, LOW);
+        digitalWrite(LED_BUILTIN, LOW);
     }
 }
 
