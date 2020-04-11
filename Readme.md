@@ -1,4 +1,6 @@
-# Documentation
+# Maze Controller for Automated Rat Maze at Poe Lab
+
+### Go to [Technical Documentation](https://github.com/vedantmathur/maze-controller/wiki)
 
 ## How to use
 
@@ -33,70 +35,9 @@ This is a nonexhaustive and unordered list of ideas I have to improve this proje
 -   Reward dispenser integration
 -   Sensor Integration (?)
 
-## Frontend
-
-Fun fact: I learned javascript/html/css while working on this project.
-
-This application is built on the Electron platform. Javascript is wrapped around Material Design by Google.
-
-If theres a problem its probably part of frontend.
-
-## Backend
-
-We have several functions we will be using
-
-```javascript
-readCOM();
-
-class arduinocom {
-    connectCOM();
-    configureModules();
-    closePorts();
-    logPorts();
-}
-```
-
-This is the order the functions will be executed in.
-
-#### `readCOM()`
-
-This function simply reads the COM ports connected to the computer and populates the dropdowns defined in the GUI so that the researcher can select which arduino (a module of the maze) corresponds to which module of the maze.
-
----
-
-The next four functions are wrapped inside a class, the class has an instantiated variable `this.ports = new Array(4)` which holds the connection handles for the 4 modules. Refer to this as `ports`. More on this variable in the final docs...
-
-#### `connectCOM()`
-
-This function establishes the connection to the COM ports. It stores the connection handle in `ports` for access everywhere.
-
-This button is associated with the GUI button "Save Modules"
-
-Future:
-
--   Add an initial command with a "Ready" return.
--   Save COM port ID and reconnect on future login
-
-#### `configureModules()`
-
-This will send a command with [L/C/R U/D] \(\*) to each connected arduino (from `ports`) and the Arduino will raise/lower each arm to the correct position.
-
-#### `closePorts()`
-
-This closes the COM ports properly so other programs may be able to use them. This allows a safe disconnect and removal of any memory leak/obstructions.
-
-#### `logPorts()`
-
-!! For debugging purposes only
-This does a `console.log(this.ports)` to display the current connection status of the arduinos on the developer console, accessible through <kbd>&#8984;</kbd> + <kbd>I</kbd>
-
-### References
-
-(\*) [Left/Center/Right AllUp/AllDown]
-
 # What I'm currently working on
 
-5. Arduino on the board
+Arduino receiving end of commands
 
 # Licenses
 
